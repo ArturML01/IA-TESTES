@@ -24,7 +24,6 @@ df_clean = df_clean[(df_clean['Quantity'] > 0) & (df_clean['UnitPrice'] > 0)]
 df_clean['TotalSpend'] = df_clean['Quantity'] * df_clean['UnitPrice']
 
 # 3. Engenharia de Recursos: Análise RFM por Cliente
-# Definir data de referência (um dia após a última compra registrada na base)
 max_date = df_clean['InvoiceDate'].max()
 ref_date = max_date + pd.Timedelta(days=1)
 
@@ -38,7 +37,6 @@ rfm.columns = ['CustomerID', 'Recency', 'Frequency', 'Monetary']
 print(f"Total de clientes únicos identificados: {len(rfm)}")
 
 # 4. Pré-processamento: Transformação Logarítmica + Escalonamento
-# Suavizar a assimetria das variáveis RFM
 rfm_log = np.log1p(rfm[['Recency', 'Frequency', 'Monetary']])
 
 scaler = StandardScaler()
