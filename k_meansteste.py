@@ -1,3 +1,5 @@
+
+# Alunos: Artur Anderson Alves Corrêa e João Pedro Felix Veloso
 import os
 import numpy as np
 import pandas as pd
